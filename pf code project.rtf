@@ -1,0 +1,438 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red183\green111\blue179;\red24\green24\blue24;\red70\green137\blue204;
+\red194\green126\blue101;\red89\green138\blue67;\red193\green193\blue193;\red67\green192\blue160;\red140\green211\blue254;
+\red202\green202\blue202;\red212\green214\blue154;\red167\green197\blue152;\red205\green173\blue106;}
+{\*\expandedcolortbl;;\cssrgb\c77255\c52549\c75294;\cssrgb\c12157\c12157\c12157;\cssrgb\c33725\c61176\c83922;
+\cssrgb\c80784\c56863\c47059;\cssrgb\c41569\c60000\c33333;\cssrgb\c80000\c80000\c80000;\cssrgb\c30588\c78824\c69020;\cssrgb\c61176\c86275\c99608;
+\cssrgb\c83137\c83137\c83137;\cssrgb\c86275\c86275\c66667;\cssrgb\c70980\c80784\c65882;\cssrgb\c84314\c72941\c49020;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 #include\cf4 \strokec4  \cf5 \strokec5 <iostream>\cf4 \strokec4  \cf6 \strokec6 // Provides input and output functionality (cin, cout, etc.)\cf7 \cb1 \strokec7 \
+\cf2 \cb3 \strokec2 #include\cf4 \strokec4  \cf5 \strokec5 <fstream>\cf4 \strokec4  \cf6 \strokec6 // Allows file handling operations (reading and writing files)\cf7 \cb1 \strokec7 \
+\cf2 \cb3 \strokec2 #include\cf4 \strokec4  \cf5 \strokec5 <iomanip>\cf4 \strokec4  \cf6 \strokec6 // Provides functions for manipulating the input/output format (e.g., setting precision, width)\cf7 \cb1 \strokec7 \
+\cf2 \cb3 \strokec2 #include\cf4 \strokec4  \cf5 \strokec5 <vector>\cf4 \strokec4  \cf6 \strokec6 // Provides the vector container for dynamic arrays. This library provides the vector container, which is a dynamic array in C++. \cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6                  // Vectors allow you to store a collection of elements (like integers, strings, etc.) and automatically resize as elements are added or removed, unlike regular arrays. \cf7 \cb1 \strokec7 \
+\cf6 \cb3 \strokec6                  // It makes managing dynamic collections much easier than using fixed-size arrays.\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 #include\cf4 \strokec4  \cf5 \strokec5 <string>\cf4 \strokec4  \cf6 \strokec6 // Allows string manipulation and handling\cf7 \cb1 \strokec7 \
+\cf2 \cb3 \strokec2 #include\cf4 \strokec4  \cf5 \strokec5 <ctime>\cf4 \strokec4  \cf6 \strokec6 // Provides functions to deal with date and time\cf7 \cb1 \strokec7 \
+\cf2 \cb3 \strokec2 #include\cf4 \strokec4  \cf5 \strokec5 <limits>\cf4 \strokec4  \cf6 \strokec6 // Defines limits for data types (e.g., numeric limits for int, float)\cf7 \cb1 \strokec7 \
+\cf2 \cb3 \strokec2 #include\cf4 \strokec4  \cf5 \strokec5 <stdexcept>\cf4 \strokec4  \cf6 \strokec6 // for exceptions\cf7 \cb1 \strokec7 \
+\
+\cf2 \cb3 \strokec2 using\cf7 \strokec7  \cf4 \strokec4 namespace\cf7 \strokec7  \cf8 \strokec8 std\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6 // Room Structure\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3 \strokec4 struct\cf7 \strokec7  \cf8 \strokec8 Room\cf7 \strokec7  \{\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7     \cf4 \strokec4 int\cf7 \strokec7  \cf9 \strokec9 roomNumber\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf4 \strokec4 bool\cf7 \strokec7  \cf9 \strokec9 isBooked\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf8 \strokec8 string\cf7 \strokec7  \cf9 \strokec9 customerName\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf8 \strokec8 string\cf7 \strokec7  \cf9 \strokec9 type\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf4 \strokec4 int\cf7 \strokec7  \cf9 \strokec9 pricePerDay\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf8 \strokec8 vector\cf10 \strokec10 <\cf8 \strokec8 string\cf10 \strokec10 >\cf7 \strokec7  \cf9 \strokec9 amenities\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf8 \strokec8 string\cf7 \strokec7  \cf9 \strokec9 checkInTime\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf8 \strokec8 string\cf7 \strokec7  \cf9 \strokec9 checkOutTime\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6     // Constructor\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7     \cf11 \strokec11 Room\cf7 \strokec7 (\cf4 \strokec4 int\cf7 \strokec7  \cf9 \strokec9 num\cf7 \strokec7 , \cf4 \strokec4 bool\cf7 \strokec7  \cf9 \strokec9 booked\cf7 \strokec7 , \cf4 \strokec4 const\cf7 \strokec7  \cf8 \strokec8 string\cf4 \strokec4 &\cf7 \strokec7  \cf9 \strokec9 name\cf7 \strokec7 , \cf4 \strokec4 const\cf7 \strokec7  \cf8 \strokec8 string\cf4 \strokec4 &\cf7 \strokec7  \cf9 \strokec9 roomType\cf7 \strokec7 )\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         : \cf9 \strokec9 roomNumber\cf7 \strokec7 (\cf9 \strokec9 num\cf7 \strokec7 ), \cf9 \strokec9 isBooked\cf7 \strokec7 (\cf9 \strokec9 booked\cf7 \strokec7 ), \cf9 \strokec9 customerName\cf7 \strokec7 (\cf9 \strokec9 name\cf7 \strokec7 ),\cf9 \strokec9 type\cf7 \strokec7 (\cf9 \strokec9 roomType\cf7 \strokec7 ), \cf9 \strokec9 checkInTime\cf7 \strokec7 (\cf5 \strokec5 ""\cf7 \strokec7 ), \cf9 \strokec9 checkOutTime\cf7 \strokec7 (\cf5 \strokec5 ""\cf7 \strokec7 ) \{\}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7 \};\cf7 \cb1 \strokec7 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6 // Function to get the current date and time as a string\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf8 \cb3 \strokec8 string\cf7 \strokec7  \cf11 \strokec11 getCurrentTime\cf7 \strokec7 () \{\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7     \cf8 \strokec8 time_t\cf7 \strokec7  \cf9 \strokec9 now\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf11 \strokec11 time\cf7 \strokec7 (\cf12 \strokec12 0\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf8 \strokec8 tm\cf10 \strokec10 *\cf7 \strokec7  \cf9 \strokec9 ltm\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf11 \strokec11 localtime\cf7 \strokec7 (\cf10 \strokec10 &\cf9 \strokec9 now\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf4 \strokec4 char\cf7 \strokec7  \cf9 \strokec9 buffer\cf7 \strokec7 [\cf12 \strokec12 80\cf7 \strokec7 ];\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf11 \strokec11 strftime\cf7 \strokec7 (\cf9 \strokec9 buffer\cf7 \strokec7 , \cf4 \strokec4 sizeof\cf7 \strokec7 (\cf9 \strokec9 buffer\cf7 \strokec7 ), \cf5 \strokec5 "%Y-%m-\cf9 \strokec9 %d\cf5 \strokec5  %H:%M:\cf9 \strokec9 %S\cf5 \strokec5 "\cf7 \strokec7 , \cf9 \strokec9 ltm\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf2 \strokec2 return\cf7 \strokec7  \cf8 \strokec8 string\cf7 \strokec7 (\cf9 \strokec9 buffer\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7 \}\cf7 \cb1 \strokec7 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6 // Function to display the welcome screen\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3 \strokec4 void\cf7 \strokec7  \cf11 \strokec11 displayWelcomeScreen\cf7 \strokec7 () \{\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [38;5;223m*************************************************"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "*                                               *"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "*               WELCOME TO                      *"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "*              Sunset Resort                    *"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "*                                               *"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "*************************************************\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [90mPress Enter to continue...\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cin\cf7 \strokec7 .\cf11 \strokec11 ignore\cf7 \strokec7 (\cf8 \strokec8 numeric_limits\cf7 \strokec7 <\cf8 \strokec8 streamsize\cf7 \strokec7 >::\cf11 \strokec11 max\cf7 \strokec7 (), \cf5 \strokec5 '\cf13 \strokec13 \\n\cf5 \strokec5 '\cf7 \strokec7 ); \cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7 \}\cf7 \cb1 \strokec7 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6 // Function to display hotel description\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3 \strokec4 void\cf7 \strokec7  \cf11 \strokec11 displayHotelDescription\cf7 \strokec7 () \{\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7    \cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7    \cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [38;5;218mSUNSET RESORT is one of the newest hotels in Islamabad."\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "The hotel is equipped with all the general amenities and"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "facilities to ensure a memorable stay.\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [90mPress Enter to continue...\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cin\cf7 \strokec7 .\cf11 \strokec11 ignore\cf7 \strokec7 (\cf8 \strokec8 numeric_limits\cf7 \strokec7 <\cf8 \strokec8 streamsize\cf7 \strokec7 >::\cf11 \strokec11 max\cf7 \strokec7 (), \cf5 \strokec5 '\cf13 \strokec13 \\n\cf5 \strokec5 '\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7 \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7  \cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6 // Function to display room details\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3 \strokec4 void\cf7 \strokec7  \cf11 \strokec11 displayRoomDetails\cf7 \strokec7 (\cf8 \strokec8 Room\cf4 \strokec4 &\cf7 \strokec7  \cf9 \strokec9 room\cf7 \strokec7 ) \{\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [38;5;129m*************************************************"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "*              FEATURES OF THIS ROOM            *"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "*************************************************\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [38;5;214mRoom Number: "\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 roomNumber\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "Room Type: "\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 type\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "Price Per Day:\cf13 \strokec13 \\033\cf5 \strokec5 [0m Rs:"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 pricePerDay\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [38;5;214mAmenities:"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf2 \strokec2 for\cf7 \strokec7  (\cf8 \strokec8 size_t\cf7 \strokec7  \cf9 \strokec9 i\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf12 \strokec12 0\cf7 \strokec7 ; \cf9 \strokec9 i\cf7 \strokec7  \cf10 \strokec10 <\cf7 \strokec7  \cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 amenities\cf7 \strokec7 .\cf11 \strokec11 size\cf7 \strokec7 (); \cf10 \strokec10 ++\cf9 \strokec9 i\cf7 \strokec7 ) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 i\cf7 \strokec7  \cf10 \strokec10 +\cf7 \strokec7  \cf12 \strokec12 1\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 ". \cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 amenities\cf11 \strokec11 [\cf9 \strokec9 i\cf11 \strokec11 ]\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \}\cf7 \cb1 \strokec7 \
+\
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [38;5;129m*************************************************\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7 \}\cf7 \cb1 \strokec7 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6 // Function to display all rooms\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3 \strokec4 void\cf7 \strokec7  \cf11 \strokec11 displayRooms\cf7 \strokec7 (\cf4 \strokec4 const\cf7 \strokec7  \cf8 \strokec8 vector\cf7 \strokec7 <\cf8 \strokec8 Room\cf7 \strokec7 >\cf4 \strokec4 &\cf7 \strokec7  \cf9 \strokec9 rooms\cf7 \strokec7 ) \{\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\n\\033\cf5 \strokec5 [38;5;223mRoom Availability:\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf2 \strokec2 for\cf7 \strokec7  (\cf8 \strokec8 size_t\cf7 \strokec7  \cf9 \strokec9 i\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf12 \strokec12 0\cf7 \strokec7 ; \cf9 \strokec9 i\cf7 \strokec7  \cf10 \strokec10 <\cf7 \strokec7  \cf9 \strokec9 rooms\cf7 \strokec7 .\cf11 \strokec11 size\cf7 \strokec7 (); \cf10 \strokec10 ++\cf9 \strokec9 i\cf7 \strokec7 ) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf2 \strokec2 if\cf7 \strokec7  (\cf9 \strokec9 i\cf7 \strokec7  \cf10 \strokec10 %\cf7 \strokec7  \cf12 \strokec12 10\cf7 \strokec7  \cf10 \strokec10 ==\cf7 \strokec7  \cf12 \strokec12 0\cf7 \strokec7 ) \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf6 \strokec6  // New row every 10 rooms\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "|Room"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 setw\cf7 \strokec7 (\cf12 \strokec12 3\cf7 \strokec7 ) \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 rooms\cf11 \strokec11 [\cf9 \strokec9 i\cf11 \strokec11 ]\cf7 \strokec7 .\cf9 \strokec9 roomNumber\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  (\cf9 \strokec9 rooms\cf11 \strokec11 [\cf9 \strokec9 i\cf11 \strokec11 ]\cf7 \strokec7 .\cf9 \strokec9 isBooked\cf7 \strokec7  \cf10 \strokec10 ?\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [31m(Booked)\cf13 \strokec13 \\033\cf5 \strokec5 [0m| "\cf7 \strokec7  \cf10 \strokec10 :\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [32m(Free)\cf13 \strokec13 \\033\cf5 \strokec5 [0m| "\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7 \}\cf7 \cb1 \strokec7 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6 // Function to book a room\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3 \strokec4 void\cf7 \strokec7  \cf11 \strokec11 bookRoom\cf7 \strokec7 (\cf8 \strokec8 vector\cf7 \strokec7 <\cf8 \strokec8 Room\cf7 \strokec7 >\cf4 \strokec4 &\cf7 \strokec7  \cf9 \strokec9 rooms\cf7 \strokec7 ) \{\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7     \cf4 \strokec4 int\cf7 \strokec7  \cf9 \strokec9 roomNumber\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf8 \strokec8 string\cf7 \strokec7  \cf9 \strokec9 customerName\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [34mEnter Room Number to Book: "\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7    \cf7 \cb1 \strokec7 \
+\
+\
+\cf7 \cb3 \strokec7     \cf2 \strokec2 try\cf7 \strokec7  \{\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6         // Error handling for non-integer input\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7         \cf2 \strokec2 if\cf7 \strokec7  (\cf11 \strokec11 !\cf7 \strokec7 (\cf9 \strokec9 cin\cf7 \strokec7  \cf11 \strokec11 >>\cf7 \strokec7  \cf9 \strokec9 roomNumber\cf7 \strokec7 )) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \cf2 \strokec2 throw\cf7 \strokec7  \cf8 \strokec8 invalid_argument\cf7 \strokec7 (\cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [31mInvalid input! Please enter a valid room number (integer).\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \}\cf7 \cb1 \strokec7 \
+\
+\
+\cf7 \cb3 \strokec7     \cf2 \strokec2 for\cf7 \strokec7  (\cf8 \strokec8 size_t\cf7 \strokec7  \cf9 \strokec9 i\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf12 \strokec12 0\cf7 \strokec7 ; \cf9 \strokec9 i\cf7 \strokec7  \cf10 \strokec10 <\cf7 \strokec7  \cf9 \strokec9 rooms\cf7 \strokec7 .\cf11 \strokec11 size\cf7 \strokec7 (); \cf10 \strokec10 ++\cf9 \strokec9 i\cf7 \strokec7 )\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf8 \strokec8 Room\cf10 \strokec10 &\cf7 \strokec7  \cf9 \strokec9 room\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf9 \strokec9 rooms\cf11 \strokec11 [\cf9 \strokec9 i\cf11 \strokec11 ]\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf2 \strokec2 if\cf7 \strokec7  (\cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 roomNumber\cf7 \strokec7  \cf10 \strokec10 ==\cf7 \strokec7  \cf9 \strokec9 roomNumber\cf7 \strokec7 ) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \cf2 \strokec2 if\cf7 \strokec7  (\cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 isBooked\cf7 \strokec7 ) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [34mRoom "\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 roomNumber\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 " is already booked!"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \} \cf2 \strokec2 else\cf7 \strokec7  \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [38;5;141mEnter Customer Name: "\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 cin\cf7 \strokec7 .\cf11 \strokec11 ignore\cf7 \strokec7 ();\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf11 \strokec11 getline\cf7 \strokec7 (\cf9 \strokec9 cin\cf7 \strokec7 , \cf9 \strokec9 customerName\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 isBooked\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf4 \strokec4 true\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 customerName\cf7 \strokec7  \cf11 \strokec11 =\cf7 \strokec7  \cf9 \strokec9 customerName\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 checkInTime\cf7 \strokec7  \cf11 \strokec11 =\cf7 \strokec7  \cf11 \strokec11 getCurrentTime\cf7 \strokec7 ();\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [32mRoom "\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 roomNumber\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 " has been booked successfully!\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6                 // Save booking details\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7                 \cf8 \strokec8 ofstream\cf7 \strokec7  \cf9 \strokec9 file\cf7 \strokec7 (\cf5 \strokec5 "CustomerData.txt"\cf7 \strokec7 , \cf8 \strokec8 ios\cf7 \strokec7 ::\cf9 \strokec9 app\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf2 \strokec2 if\cf7 \strokec7  (\cf9 \strokec9 file\cf7 \strokec7 .\cf11 \strokec11 is_open\cf7 \strokec7 ()) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                     \cf9 \strokec9 file\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 customerName\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 ","\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 roomNumber\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 ","\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 checkInTime\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 ",-\cf13 \strokec13 \\n\cf5 \strokec5 "\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                     \cf9 \strokec9 file\cf7 \strokec7 .\cf11 \strokec11 close\cf7 \strokec7 ();\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \} \cf2 \strokec2 else\cf7 \strokec7  \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [31mError: Could not open file!\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \cf2 \strokec2 return\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [31mRoom "\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 roomNumber\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 " does not exist!\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7 \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7    \cf2 \strokec2 catch\cf7 \strokec7  (\cf4 \strokec4 const\cf7 \strokec7  \cf8 \strokec8 invalid_argument\cf10 \strokec10 &\cf7 \strokec7  \cf9 \strokec9 e\cf7 \strokec7 ) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 e\cf7 \strokec7 .\cf11 \strokec11 what\cf7 \strokec7 () \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf9 \strokec9 cin\cf7 \strokec7 .\cf11 \strokec11 clear\cf7 \strokec7 ();\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf9 \strokec9 cin\cf7 \strokec7 .\cf11 \strokec11 ignore\cf7 \strokec7 (\cf8 \strokec8 numeric_limits\cf7 \strokec7 <\cf8 \strokec8 streamsize\cf7 \strokec7 >::\cf11 \strokec11 max\cf7 \strokec7 (), \cf5 \strokec5 '\cf13 \strokec13 \\n\cf5 \strokec5 '\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf2 \strokec2 catch\cf7 \strokec7  (\cf4 \strokec4 const\cf7 \strokec7  \cf8 \strokec8 runtime_error\cf10 \strokec10 &\cf7 \strokec7  \cf9 \strokec9 e\cf7 \strokec7 ) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 e\cf7 \strokec7 .\cf11 \strokec11 what\cf7 \strokec7 () \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7 \}\cf7 \cb1 \strokec7 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6 // Function to display customer details\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3 \strokec4 void\cf7 \strokec7  \cf11 \strokec11 displayCustomerDetails\cf7 \strokec7 () \{\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7     \cf8 \strokec8 ifstream\cf7 \strokec7  \cf9 \strokec9 file\cf7 \strokec7 (\cf5 \strokec5 "CustomerData.txt"\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf8 \strokec8 string\cf7 \strokec7  \cf9 \strokec9 line\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [38;5;111mCustomer Details:"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "----------------------------------------------------------------------------------"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 setw\cf7 \strokec7 (\cf12 \strokec12 20\cf7 \strokec7 ) \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "Customer Name"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 setw\cf7 \strokec7 (\cf12 \strokec12 10\cf7 \strokec7 ) \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "Room No"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 setw\cf7 \strokec7 (\cf12 \strokec12 20\cf7 \strokec7 ) \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "Check-in Time"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 setw\cf7 \strokec7 (\cf12 \strokec12 20\cf7 \strokec7 ) \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "Check-out Time"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "----------------------------------------------------------------------------------\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf2 \strokec2 if\cf7 \strokec7  (\cf9 \strokec9 file\cf7 \strokec7 .\cf11 \strokec11 is_open\cf7 \strokec7 ()) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf2 \strokec2 while\cf7 \strokec7  (\cf11 \strokec11 getline\cf7 \strokec7 (\cf9 \strokec9 file\cf7 \strokec7 , \cf9 \strokec9 line\cf7 \strokec7 )) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \cf8 \strokec8 size_t\cf7 \strokec7  \cf9 \strokec9 pos1\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf9 \strokec9 line\cf7 \strokec7 .\cf11 \strokec11 find\cf7 \strokec7 (\cf5 \strokec5 ','\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \cf8 \strokec8 size_t\cf7 \strokec7  \cf9 \strokec9 pos2\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf9 \strokec9 line\cf7 \strokec7 .\cf11 \strokec11 find\cf7 \strokec7 (\cf5 \strokec5 ','\cf7 \strokec7 , \cf9 \strokec9 pos1\cf7 \strokec7  \cf10 \strokec10 +\cf7 \strokec7  \cf12 \strokec12 1\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \cf8 \strokec8 size_t\cf7 \strokec7  \cf9 \strokec9 pos3\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf9 \strokec9 line\cf7 \strokec7 .\cf11 \strokec11 find\cf7 \strokec7 (\cf5 \strokec5 ','\cf7 \strokec7 , \cf9 \strokec9 pos2\cf7 \strokec7  \cf10 \strokec10 +\cf7 \strokec7  \cf12 \strokec12 1\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\
+\cf7 \cb3 \strokec7             \cf8 \strokec8 string\cf7 \strokec7  \cf9 \strokec9 name\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf9 \strokec9 line\cf7 \strokec7 .\cf11 \strokec11 substr\cf7 \strokec7 (\cf12 \strokec12 0\cf7 \strokec7 , \cf9 \strokec9 pos1\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \cf8 \strokec8 string\cf7 \strokec7  \cf9 \strokec9 roomNo\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf9 \strokec9 line\cf7 \strokec7 .\cf11 \strokec11 substr\cf7 \strokec7 (\cf9 \strokec9 pos1\cf7 \strokec7  \cf10 \strokec10 +\cf7 \strokec7  \cf12 \strokec12 1\cf7 \strokec7 , \cf9 \strokec9 pos2\cf7 \strokec7  \cf10 \strokec10 -\cf7 \strokec7  \cf9 \strokec9 pos1\cf7 \strokec7  \cf10 \strokec10 -\cf7 \strokec7  \cf12 \strokec12 1\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \cf8 \strokec8 string\cf7 \strokec7  \cf9 \strokec9 checkIn\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf9 \strokec9 line\cf7 \strokec7 .\cf11 \strokec11 substr\cf7 \strokec7 (\cf9 \strokec9 pos2\cf7 \strokec7  \cf10 \strokec10 +\cf7 \strokec7  \cf12 \strokec12 1\cf7 \strokec7 , \cf9 \strokec9 pos3\cf7 \strokec7  \cf10 \strokec10 -\cf7 \strokec7  \cf9 \strokec9 pos2\cf7 \strokec7  \cf10 \strokec10 -\cf7 \strokec7  \cf12 \strokec12 1\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \cf8 \strokec8 string\cf7 \strokec7  \cf9 \strokec9 checkOut\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf9 \strokec9 line\cf7 \strokec7 .\cf11 \strokec11 substr\cf7 \strokec7 (\cf9 \strokec9 pos3\cf7 \strokec7  \cf10 \strokec10 +\cf7 \strokec7  \cf12 \strokec12 1\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\
+\cf7 \cb3 \strokec7             \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 setw\cf7 \strokec7 (\cf12 \strokec12 20\cf7 \strokec7 ) \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 name\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 setw\cf7 \strokec7 (\cf12 \strokec12 10\cf7 \strokec7 ) \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 roomNo\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 setw\cf7 \strokec7 (\cf12 \strokec12 20\cf7 \strokec7 ) \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 checkIn\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 setw\cf7 \strokec7 (\cf12 \strokec12 20\cf7 \strokec7 ) \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 checkOut\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf9 \strokec9 file\cf7 \strokec7 .\cf11 \strokec11 close\cf7 \strokec7 ();\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \} \cf2 \strokec2 else\cf7 \strokec7  \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [31mNo customer data available!\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7      \cf7 \cb1 \strokec7 \
+\
+\cf7 \cb3 \strokec7 \}\cf7 \cb1 \strokec7 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6 // Function to check out a room\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3 \strokec4 void\cf7 \strokec7  \cf11 \strokec11 checkOutRoom\cf7 \strokec7 (\cf8 \strokec8 vector\cf7 \strokec7 <\cf8 \strokec8 Room\cf7 \strokec7 >\cf4 \strokec4 &\cf7 \strokec7  \cf9 \strokec9 rooms\cf7 \strokec7 ) \cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf4 \strokec4 int\cf7 \strokec7  \cf9 \strokec9 roomNumber\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\
+\cf7 \cb3 \strokec7     \cf2 \strokec2 try\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7      \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [38;5;141mEnter Room Number to Check Out: \cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf2 \strokec2 if\cf7 \strokec7  (\cf11 \strokec11 !\cf7 \strokec7 (\cf9 \strokec9 cin\cf7 \strokec7  \cf11 \strokec11 >>\cf7 \strokec7  \cf9 \strokec9 roomNumber\cf7 \strokec7 )) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \cf2 \strokec2 throw\cf7 \strokec7  \cf8 \strokec8 invalid_argument\cf7 \strokec7 (\cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [31mInvalid input! Please enter a valid room number (integer).\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \}\cf7 \cb1 \strokec7 \
+\
+\cf7 \cb3 \strokec7     \cf2 \strokec2 for\cf7 \strokec7  (\cf8 \strokec8 size_t\cf7 \strokec7  \cf9 \strokec9 i\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf12 \strokec12 0\cf7 \strokec7 ; \cf9 \strokec9 i\cf7 \strokec7  \cf10 \strokec10 <\cf7 \strokec7  \cf9 \strokec9 rooms\cf7 \strokec7 .\cf11 \strokec11 size\cf7 \strokec7 (); \cf10 \strokec10 ++\cf9 \strokec9 i\cf7 \strokec7 )\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf8 \strokec8 Room\cf10 \strokec10 &\cf7 \strokec7  \cf9 \strokec9 room\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf9 \strokec9 rooms\cf11 \strokec11 [\cf9 \strokec9 i\cf11 \strokec11 ]\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf2 \strokec2 if\cf7 \strokec7  (\cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 roomNumber\cf7 \strokec7  \cf10 \strokec10 ==\cf7 \strokec7  \cf9 \strokec9 roomNumber\cf7 \strokec7 ) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \cf2 \strokec2 if\cf7 \strokec7  (\cf10 \strokec10 !\cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 isBooked\cf7 \strokec7 ) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [34mRoom "\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 roomNumber\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 " is already free!"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \} \cf2 \strokec2 else\cf7 \strokec7  \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 isBooked\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf4 \strokec4 false\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 checkOutTime\cf7 \strokec7  \cf11 \strokec11 =\cf7 \strokec7  \cf11 \strokec11 getCurrentTime\cf7 \strokec7 ();\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [32mRoom "\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 roomNumber\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 " has been checked out successfully!\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6                 // Update customer data file\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7                 \cf8 \strokec8 ofstream\cf7 \strokec7  \cf9 \strokec9 file\cf7 \strokec7 (\cf5 \strokec5 "CustomerData.txt"\cf7 \strokec7 , \cf8 \strokec8 ios\cf7 \strokec7 ::\cf9 \strokec9 app\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf2 \strokec2 if\cf7 \strokec7  (\cf9 \strokec9 file\cf7 \strokec7 .\cf11 \strokec11 is_open\cf7 \strokec7 ()) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                     \cf9 \strokec9 file\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 customerName\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 ","\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 roomNumber\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 ","\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 checkInTime\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 ","\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 checkOutTime\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\n\cf5 \strokec5 "\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                     \cf9 \strokec9 file\cf7 \strokec7 .\cf11 \strokec11 close\cf7 \strokec7 ();\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \}\cf7 \cb1 \strokec7 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6                 // Reset room details\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 customerName\cf7 \strokec7  \cf11 \strokec11 =\cf7 \strokec7  \cf5 \strokec5 ""\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 checkInTime\cf7 \strokec7  \cf11 \strokec11 =\cf7 \strokec7  \cf5 \strokec5 ""\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 checkOutTime\cf7 \strokec7  \cf11 \strokec11 =\cf7 \strokec7  \cf5 \strokec5 ""\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \cf2 \strokec2 return\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7       \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [31mRoom "\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 roomNumber\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 " does not exist!\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \} \cf2 \strokec2 catch\cf7 \strokec7  (\cf4 \strokec4 const\cf7 \strokec7  \cf8 \strokec8 invalid_argument\cf10 \strokec10 &\cf7 \strokec7  \cf9 \strokec9 e\cf7 \strokec7 ) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 e\cf7 \strokec7 .\cf11 \strokec11 what\cf7 \strokec7 () \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf9 \strokec9 cin\cf7 \strokec7 .\cf11 \strokec11 clear\cf7 \strokec7 ();\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf9 \strokec9 cin\cf7 \strokec7 .\cf11 \strokec11 ignore\cf7 \strokec7 (\cf8 \strokec8 numeric_limits\cf7 \strokec7 <\cf8 \strokec8 streamsize\cf7 \strokec7 >::\cf11 \strokec11 max\cf7 \strokec7 (), \cf5 \strokec5 '\cf13 \strokec13 \\n\cf5 \strokec5 '\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \} \cf2 \strokec2 catch\cf7 \strokec7  (\cf4 \strokec4 const\cf7 \strokec7  \cf8 \strokec8 runtime_error\cf10 \strokec10 &\cf7 \strokec7  \cf9 \strokec9 e\cf7 \strokec7 ) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 e\cf7 \strokec7 .\cf11 \strokec11 what\cf7 \strokec7 () \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7 \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7  \cf7 \cb1 \strokec7 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6 // Function to generate and display the summary report of bookings and room statuses\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3 \strokec4 void\cf7 \strokec7  \cf11 \strokec11 generateSummaryReport\cf7 \strokec7 (\cf4 \strokec4 const\cf7 \strokec7  \cf8 \strokec8 vector\cf7 \strokec7 <\cf8 \strokec8 Room\cf7 \strokec7 >\cf4 \strokec4 &\cf7 \strokec7  \cf9 \strokec9 rooms\cf7 \strokec7 ) \{\cf7 \cb1 \strokec7 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7     \cf4 \strokec4 const\cf7 \strokec7  \cf8 \strokec8 string\cf7 \strokec7  \cf9 \strokec9 red\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [31m"\cf7 \strokec7 ;\cf6 \strokec6    // Red text\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf4 \strokec4 const\cf7 \strokec7  \cf8 \strokec8 string\cf7 \strokec7  \cf9 \strokec9 green\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [32m"\cf7 \strokec7 ;\cf6 \strokec6  // Green text\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf4 \strokec4 const\cf7 \strokec7  \cf8 \strokec8 string\cf7 \strokec7  \cf9 \strokec9 reset\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7 ;\cf6 \strokec6   // Reset to default color\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7  \cf2 \strokec2 try\cf7 \strokec7  \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\n\cf5 \strokec5   \cf13 \strokec13 \\t\cf5 \strokec5   \cf13 \strokec13 \\t\cf5 \strokec5              \cf13 \strokec13 \\033\cf5 \strokec5 [38;5;214m     Summary Report of Bookings and Room Statuses \cf13 \strokec13 \\n\cf5 \strokec5 "\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [38;5;214m--------------------------------------------------------------------------------------------------------------------------------------------\cf13 \strokec13 \\n\cf5 \strokec5 "\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 setw\cf7 \strokec7 (\cf12 \strokec12 25\cf7 \strokec7 ) \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "Guest Name"\cf7 \strokec7  \cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7          \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 setw\cf7 \strokec7 (\cf12 \strokec12 25\cf7 \strokec7 ) \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "Room Number "\cf7 \strokec7  \cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7          \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 setw\cf7 \strokec7 (\cf12 \strokec12 25\cf7 \strokec7 ) \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "   Room Type "\cf7 \strokec7  \cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7          \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 setw\cf7 \strokec7 (\cf12 \strokec12 25\cf7 \strokec7 ) \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "  Status "\cf7 \strokec7  \cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7          \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 setw\cf7 \strokec7 (\cf12 \strokec12 30\cf7 \strokec7 ) \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "  Check-In Time  "\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "--------------------------------------------------------------------------------------------------------------------------------------------\cf13 \strokec13 \\033\cf5 \strokec5 [0m\cf13 \strokec13 \\n\cf5 \strokec5 "\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\
+\cf7 \cb3 \strokec7     \cf2 \strokec2 for\cf7 \strokec7  (\cf8 \strokec8 size_t\cf7 \strokec7  \cf9 \strokec9 i\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf12 \strokec12 0\cf7 \strokec7 ; \cf9 \strokec9 i\cf7 \strokec7  \cf10 \strokec10 <\cf7 \strokec7  \cf9 \strokec9 rooms\cf7 \strokec7 .\cf11 \strokec11 size\cf7 \strokec7 (); \cf10 \strokec10 ++\cf9 \strokec9 i\cf7 \strokec7 ) \cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf4 \strokec4 const\cf7 \strokec7  \cf8 \strokec8 Room\cf10 \strokec10 &\cf7 \strokec7  \cf9 \strokec9 room\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf9 \strokec9 rooms\cf11 \strokec11 [\cf9 \strokec9 i\cf11 \strokec11 ]\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\
+\cf7 \cb3 \strokec7         \cf8 \strokec8 string\cf7 \strokec7  \cf9 \strokec9 status\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 isBooked\cf7 \strokec7  \cf10 \strokec10 ?\cf7 \strokec7  \cf9 \strokec9 red\cf7 \strokec7  \cf11 \strokec11 +\cf7 \strokec7  \cf5 \strokec5 "Booked"\cf7 \strokec7  \cf11 \strokec11 +\cf7 \strokec7  \cf9 \strokec9 reset\cf7 \strokec7  \cf10 \strokec10 :\cf7 \strokec7  \cf9 \strokec9 green\cf7 \strokec7  \cf11 \strokec11 +\cf7 \strokec7  \cf5 \strokec5 "Available"\cf7 \strokec7  \cf11 \strokec11 +\cf7 \strokec7  \cf9 \strokec9 reset\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf8 \strokec8 string\cf7 \strokec7  \cf9 \strokec9 roomtype\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [34m"\cf7 \strokec7  \cf11 \strokec11 +\cf7 \strokec7  \cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 type\cf7 \strokec7  \cf11 \strokec11 +\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7 ;\cf6 \strokec6  // Blue for "Room Type"\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf8 \strokec8 string\cf7 \strokec7  \cf9 \strokec9 roomcustomerName\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [33m"\cf7 \strokec7  \cf11 \strokec11 +\cf7 \strokec7  \cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 customerName\cf7 \strokec7  \cf11 \strokec11 +\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7 ;\cf6 \strokec6  // Yellow for "Guest Name"\cf7 \cb1 \strokec7 \
+\
+\cf7 \cb3 \strokec7         \cf7 \cb1 \strokec7 \
+\
+\cf7 \cb3 \strokec7         \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf8 \strokec8 std\cf7 \strokec7 ::\cf11 \strokec11 right\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7              \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 setw\cf7 \strokec7 (\cf12 \strokec12 30\cf7 \strokec7 ) \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 roomcustomerName\cf7 \strokec7  \cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7              \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 setw\cf7 \strokec7 (\cf12 \strokec12 25\cf7 \strokec7 ) \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 roomNumber\cf7 \strokec7  \cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7              \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 setw\cf7 \strokec7 (\cf12 \strokec12 36\cf7 \strokec7 ) \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 roomtype\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7              \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 setw\cf7 \strokec7 (\cf12 \strokec12 38\cf7 \strokec7 ) \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 status\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7              \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 setw\cf7 \strokec7 (\cf12 \strokec12 36\cf7 \strokec7 ) \cf11 \strokec11 <<\cf7 \strokec7  (\cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 isBooked\cf7 \strokec7  \cf10 \strokec10 ?\cf7 \strokec7  \cf9 \strokec9 room\cf7 \strokec7 .\cf9 \strokec9 checkInTime\cf7 \strokec7  \cf10 \strokec10 :\cf7 \strokec7  \cf5 \strokec5 ""\cf7 \strokec7 ) \cf11 \strokec11 <<\cf7 \strokec7  \cf8 \strokec8 std\cf7 \strokec7 ::\cf11 \strokec11 flush\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [38;5;214m--------------------------------------------------------------------------------------------------------------------------------------------\cf13 \strokec13 \\033\cf5 \strokec5 [0m\cf13 \strokec13 \\n\cf5 \strokec5 "\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7 \}\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 catch\cf7 \strokec7  (\cf4 \strokec4 const\cf7 \strokec7  \cf8 \strokec8 runtime_error\cf10 \strokec10 &\cf7 \strokec7  \cf9 \strokec9 e\cf7 \strokec7 ) \{\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7         \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 e\cf7 \strokec7 .\cf11 \strokec11 what\cf7 \strokec7 () \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7 \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6 // Main menu\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3 \strokec4 void\cf7 \strokec7  \cf11 \strokec11 displayMenu\cf7 \strokec7 () \{\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [1m\cf13 \strokec13 \\033\cf5 \strokec5 [35m\cf13 \strokec13 \\n\cf5 \strokec5 Hotel Management System\cf13 \strokec13 \\033\cf5 \strokec5 [0m\cf13 \strokec13 \\n\cf5 \strokec5 "\cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [38;5;114m1. \cf13 \strokec13 \\033\cf5 \strokec5 [38;5;17m Display Rooms"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [38;5;114m2. \cf13 \strokec13 \\033\cf5 \strokec5 [38;5;17m View Room Details"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [38;5;114m3. \cf13 \strokec13 \\033\cf5 \strokec5 [38;5;17m Book a Room"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [38;5;114m4. \cf13 \strokec13 \\033\cf5 \strokec5 [38;5;17m Display Customer Details"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [38;5;114m5. \cf13 \strokec13 \\033\cf5 \strokec5 [38;5;17m Check Out Room"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [38;5;114m6. \cf13 \strokec13 \\033\cf5 \strokec5 [38;5;17m Summary Report of all bookings"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [38;5;114m7. \cf13 \strokec13 \\033\cf5 \strokec5 [38;5;17m Exit \cf13 \strokec13 \\033\cf5 \strokec5 [0m\cf13 \strokec13 \\n\cf5 \strokec5 "\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [35mEnter your choice :\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7 \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7  \cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3 \strokec4 int\cf7 \strokec7  \cf11 \strokec11 main\cf7 \strokec7 () \{\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7     \cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf8 \strokec8 vector\cf10 \strokec10 <\cf8 \strokec8 Room\cf10 \strokec10 >\cf7 \strokec7  \cf9 \strokec9 rooms\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\
+\cf7 \cb3 \strokec7     \cf9 \strokec9 rooms\cf7 \strokec7 .\cf11 \strokec11 reserve\cf7 \strokec7 (\cf12 \strokec12 100\cf7 \strokec7 );\cf6 \strokec6  // Reserve memory for 100 rooms\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf2 \strokec2 for\cf7 \strokec7  (\cf4 \strokec4 int\cf7 \strokec7  \cf9 \strokec9 i\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf12 \strokec12 0\cf7 \strokec7 ; \cf9 \strokec9 i\cf7 \strokec7  \cf10 \strokec10 <\cf7 \strokec7  \cf12 \strokec12 100\cf7 \strokec7 ; \cf9 \strokec9 i\cf10 \strokec10 ++\cf7 \strokec7 ) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf8 \strokec8 string\cf7 \strokec7  \cf9 \strokec9 roomType\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  (\cf9 \strokec9 i\cf7 \strokec7  \cf10 \strokec10 <\cf7 \strokec7  \cf12 \strokec12 30\cf7 \strokec7 ) \cf10 \strokec10 ?\cf7 \strokec7  \cf5 \strokec5 "Single"\cf7 \strokec7  \cf10 \strokec10 :\cf7 \strokec7  (\cf9 \strokec9 i\cf7 \strokec7  \cf10 \strokec10 <\cf7 \strokec7  \cf12 \strokec12 60\cf7 \strokec7 ) \cf10 \strokec10 ?\cf7 \strokec7  \cf5 \strokec5 "Double"\cf7 \strokec7  \cf10 \strokec10 :\cf7 \strokec7  \cf5 \strokec5 "Suite"\cf7 \strokec7 ;\cf6 \strokec6  // Assigning room types based on room number\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf9 \strokec9 rooms\cf7 \strokec7 .\cf11 \strokec11 emplace_back\cf7 \strokec7 (\cf9 \strokec9 i\cf7 \strokec7  \cf10 \strokec10 +\cf7 \strokec7  \cf12 \strokec12 1\cf7 \strokec7 , \cf4 \strokec4 false\cf7 \strokec7 , \cf5 \strokec5 ""\cf7 \strokec7 , \cf9 \strokec9 roomType\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf9 \strokec9 rooms\cf11 \strokec11 [\cf9 \strokec9 i\cf11 \strokec11 ]\cf7 \strokec7 .\cf9 \strokec9 roomNumber\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf9 \strokec9 i\cf7 \strokec7  \cf10 \strokec10 +\cf7 \strokec7  \cf12 \strokec12 1\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf9 \strokec9 rooms\cf11 \strokec11 [\cf9 \strokec9 i\cf11 \strokec11 ]\cf7 \strokec7 .\cf9 \strokec9 isBooked\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf4 \strokec4 false\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf9 \strokec9 rooms\cf11 \strokec11 [\cf9 \strokec9 i\cf11 \strokec11 ]\cf7 \strokec7 .\cf9 \strokec9 customerName\cf7 \strokec7  \cf11 \strokec11 =\cf7 \strokec7  \cf5 \strokec5 ""\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf9 \strokec9 rooms\cf11 \strokec11 [\cf9 \strokec9 i\cf11 \strokec11 ]\cf7 \strokec7 .\cf9 \strokec9 pricePerDay\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  (\cf9 \strokec9 i\cf7 \strokec7  \cf10 \strokec10 <\cf7 \strokec7  \cf12 \strokec12 5\cf7 \strokec7 ) \cf10 \strokec10 ?\cf7 \strokec7  \cf12 \strokec12 1500\cf7 \strokec7  \cf10 \strokec10 :\cf7 \strokec7  \cf12 \strokec12 2500\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7          \cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6          // Manually assign values to the amenities vectors\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7         \cf9 \strokec9 rooms\cf11 \strokec11 [\cf9 \strokec9 i\cf11 \strokec11 ]\cf7 \strokec7 .\cf9 \strokec9 amenities\cf7 \strokec7 .\cf11 \strokec11 resize\cf7 \strokec7 (\cf12 \strokec12 4\cf7 \strokec7 );\cf6 \strokec6   // Ensure the vector has space for 4 elements\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf9 \strokec9 rooms\cf11 \strokec11 [\cf9 \strokec9 i\cf11 \strokec11 ]\cf7 \strokec7 .\cf9 \strokec9 amenities\cf11 \strokec11 [\cf12 \strokec12 0\cf11 \strokec11 ]\cf7 \strokec7  \cf11 \strokec11 =\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [38;5;214mA/C"\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf9 \strokec9 rooms\cf11 \strokec11 [\cf9 \strokec9 i\cf11 \strokec11 ]\cf7 \strokec7 .\cf9 \strokec9 amenities\cf11 \strokec11 [\cf12 \strokec12 1\cf11 \strokec11 ]\cf7 \strokec7  \cf11 \strokec11 =\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [38;5;214mGeyser"\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf9 \strokec9 rooms\cf11 \strokec11 [\cf9 \strokec9 i\cf11 \strokec11 ]\cf7 \strokec7 .\cf9 \strokec9 amenities\cf11 \strokec11 [\cf12 \strokec12 2\cf11 \strokec11 ]\cf7 \strokec7  \cf11 \strokec11 =\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [38;5;214mTV"\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf9 \strokec9 rooms\cf11 \strokec11 [\cf9 \strokec9 i\cf11 \strokec11 ]\cf7 \strokec7 .\cf9 \strokec9 amenities\cf11 \strokec11 [\cf12 \strokec12 3\cf11 \strokec11 ]\cf7 \strokec7  \cf11 \strokec11 =\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [38;5;214mFree WiFi\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \}\cf7 \cb1 \strokec7 \
+\
+\cf7 \cb3 \strokec7     \cf11 \strokec11 displayWelcomeScreen\cf7 \strokec7 ();\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf11 \strokec11 displayHotelDescription\cf7 \strokec7 ();\cf7 \cb1 \strokec7 \
+\
+\cf7 \cb3 \strokec7     \cf4 \strokec4 int\cf7 \strokec7  \cf9 \strokec9 choice\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf4 \strokec4 bool\cf7 \strokec7  \cf9 \strokec9 found\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf4 \strokec4 false\cf7 \strokec7 ;\cf6 \strokec6   // Declare 'found' here to make it accessible in the switch block\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \cf2 \strokec2 do\cf7 \strokec7  \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf11 \strokec11 displayMenu\cf7 \strokec7 ();\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6         // Handle invalid input for the menu choice\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7         \cf2 \strokec2 while\cf7 \strokec7  (\cf4 \strokec4 true\cf7 \strokec7 ) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \cf2 \strokec2 try\cf7 \strokec7  \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 cin\cf7 \strokec7  \cf11 \strokec11 >>\cf7 \strokec7  \cf9 \strokec9 choice\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf2 \strokec2 if\cf7 \strokec7  (\cf9 \strokec9 cin\cf7 \strokec7 .\cf11 \strokec11 fail\cf7 \strokec7 ()) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                     \cf2 \strokec2 throw\cf7 \strokec7  \cf8 \strokec8 invalid_argument\cf7 \strokec7 (\cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [31mInvalid input! Please enter a valid menu choice (1-7).\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf2 \strokec2 break\cf7 \strokec7 ;\cf6 \strokec6   // Exit the loop if valid input is received\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \} \cf2 \strokec2 catch\cf7 \strokec7  (\cf4 \strokec4 const\cf7 \strokec7  \cf8 \strokec8 invalid_argument\cf10 \strokec10 &\cf7 \strokec7  \cf9 \strokec9 e\cf7 \strokec7 ) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 e\cf7 \strokec7 .\cf11 \strokec11 what\cf7 \strokec7 () \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 cin\cf7 \strokec7 .\cf11 \strokec11 clear\cf7 \strokec7 ();\cf6 \strokec6  // Clear error state\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 cin\cf7 \strokec7 .\cf11 \strokec11 ignore\cf7 \strokec7 (\cf8 \strokec8 numeric_limits\cf7 \strokec7 <\cf8 \strokec8 streamsize\cf7 \strokec7 >::\cf11 \strokec11 max\cf7 \strokec7 (), \cf5 \strokec5 '\cf13 \strokec13 \\n\cf5 \strokec5 '\cf7 \strokec7 );\cf6 \strokec6  // Ignore invalid input\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \cf2 \strokec2 switch\cf7 \strokec7  (\cf9 \strokec9 choice\cf7 \strokec7 ) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \cf2 \strokec2 case\cf7 \strokec7  \cf12 \strokec12 1\cf7 \strokec7 :\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf11 \strokec11 displayRooms\cf7 \strokec7 (\cf9 \strokec9 rooms\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf2 \strokec2 break\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \cf2 \strokec2 case\cf7 \strokec7  \cf12 \strokec12 2\cf7 \strokec7 :\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6              // Ask for the room number again to display room details\cf7 \cb1 \strokec7 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7                 \cf4 \strokec4 int\cf7 \strokec7  \cf9 \strokec9 roomNumber\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [34mEnter Room Number to View Details:\cf13 \strokec13 \\033\cf5 \strokec5 [0m "\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 cin\cf7 \strokec7  \cf11 \strokec11 >>\cf7 \strokec7  \cf9 \strokec9 roomNumber\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 found\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf4 \strokec4 false\cf7 \strokec7 ;\cf6 \strokec6   // Reset the 'found' flag before searching for the room\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf2 \strokec2 for\cf7 \strokec7  (\cf8 \strokec8 size_t\cf7 \strokec7  \cf9 \strokec9 i\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf12 \strokec12 0\cf7 \strokec7 ; \cf9 \strokec9 i\cf7 \strokec7  \cf10 \strokec10 <\cf7 \strokec7  \cf9 \strokec9 rooms\cf7 \strokec7 .\cf11 \strokec11 size\cf7 \strokec7 (); \cf10 \strokec10 ++\cf9 \strokec9 i\cf7 \strokec7 ) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                     \cf2 \strokec2 if\cf7 \strokec7  (\cf9 \strokec9 rooms\cf11 \strokec11 [\cf9 \strokec9 i\cf11 \strokec11 ]\cf7 \strokec7 .\cf9 \strokec9 roomNumber\cf7 \strokec7  \cf10 \strokec10 ==\cf7 \strokec7  \cf9 \strokec9 roomNumber\cf7 \strokec7 ) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                         \cf11 \strokec11 displayRoomDetails\cf7 \strokec7 (\cf9 \strokec9 rooms\cf11 \strokec11 [\cf9 \strokec9 i\cf11 \strokec11 ]\cf7 \strokec7 );\cf6 \strokec6  // Pass the specific room\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                         \cf9 \strokec9 found\cf7 \strokec7  \cf10 \strokec10 =\cf7 \strokec7  \cf4 \strokec4 true\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                         \cf2 \strokec2 break\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                     \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf2 \strokec2 if\cf7 \strokec7  (\cf10 \strokec10 !\cf9 \strokec9 found\cf7 \strokec7 ) \{\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                     \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [31mRoom "\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf9 \strokec9 roomNumber\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 " does not exist!\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf2 \strokec2 break\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \cf2 \strokec2 case\cf7 \strokec7  \cf12 \strokec12 3\cf7 \strokec7 :\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf11 \strokec11 bookRoom\cf7 \strokec7 (\cf9 \strokec9 rooms\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf2 \strokec2 break\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \cf2 \strokec2 case\cf7 \strokec7  \cf12 \strokec12 4\cf7 \strokec7 :\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf11 \strokec11 displayCustomerDetails\cf7 \strokec7 ();\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf2 \strokec2 break\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \cf2 \strokec2 case\cf7 \strokec7  \cf12 \strokec12 5\cf7 \strokec7 :\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf11 \strokec11 checkOutRoom\cf7 \strokec7 (\cf9 \strokec9 rooms\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf2 \strokec2 break\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \cf2 \strokec2 case\cf7 \strokec7  \cf12 \strokec12 6\cf7 \strokec7 :\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \cf11 \strokec11 generateSummaryReport\cf7 \strokec7 (\cf9 \strokec9 rooms\cf7 \strokec7 );\cf6 \strokec6   // Display the summary report\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf2 \strokec2 break\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \cf2 \strokec2 case\cf7 \strokec7  \cf12 \strokec12 7\cf7 \strokec7 :\cf7 \cb1 \strokec7 \
+\
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 cout\cf11 \strokec11 <<\cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [38;5;225mTHANK YOU FOR VISITING OUR HOTEL"\cf11 \strokec11 <<endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "Exiting program. Thank you!\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf2 \strokec2 break\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7             \cf2 \strokec2 default\cf7 \strokec7 :\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7                 \cf9 \strokec9 cout\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf5 \strokec5 "\cf13 \strokec13 \\033\cf5 \strokec5 [31mInvalid choice! Please try again.\cf13 \strokec13 \\033\cf5 \strokec5 [0m"\cf7 \strokec7  \cf11 \strokec11 <<\cf7 \strokec7  \cf11 \strokec11 endl\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7         \}\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7     \} \cf2 \strokec2 while\cf7 \strokec7  (\cf9 \strokec9 choice\cf7 \strokec7  \cf10 \strokec10 !=\cf7 \strokec7  \cf12 \strokec12 7\cf7 \strokec7 );\cf7 \cb1 \strokec7 \
+\
+\cf7 \cb3 \strokec7     \cf2 \strokec2 return\cf7 \strokec7  \cf12 \strokec12 0\cf7 \strokec7 ;\cf7 \cb1 \strokec7 \
+\cf7 \cb3 \strokec7 \}\cf7 \cb1 \strokec7 \
+\
+}
